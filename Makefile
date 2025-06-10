@@ -13,17 +13,20 @@ B_OBJS	:= ${B_SRC:.c=.o}
 
 all: $(NAME)
 
-$(MLX_42):
+$(MLX_42): $(LIBMLX)
 	@make -s -C $(LIBMLX)
 
+$(LIBMLX):
+	@cd MLX42 && cmake -B build && cmake --build build && cd ..
+
 $(LIBFT):
-	@make -s -C $(LIBFT)
+	@make -s -C libft
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(MLX_42) $(OBJS) $(LIBFT)
-	$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LIBFT) -o $(NAME)
+	$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LIBFT) -o $(NAME) -g
 
 clean:
 	@rm -rf *.o

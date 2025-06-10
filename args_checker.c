@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: najgharb <najgharb@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: najlghar <najlghar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:11:33 by najgharb          #+#    #+#             */
-/*   Updated: 2025/06/04 10:51:15 by najgharb         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:05:48 by najlghar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int	args_checker(int ac, char **argv)
 		ft_putstr_fd("fractol invalid\n", STDERR_FILENO);
 	else if (!ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) && ac > 2)
 		ft_putstr_fd("The Mandelbrot set does not require parameters\n",
-				STDERR_FILENO);
+			STDERR_FILENO);
 	else if (!ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) && ac < 4)
-		ft_putstr_fd("The Julia set requires parameters x e y\n",
-				STDERR_FILENO);
+		ft_putstr_fd("The Julia set requires parameters x and y\n",
+			STDERR_FILENO);
 	else if (!ft_strncmp(argv[1], "julia", ft_strlen(argv[1]))
 		&& (check_coordinate(argv[2]) == 0 || check_coordinate(argv[3]) == 0))
 		ft_putstr_fd("The coordinates are not valid\n",
-				STDERR_FILENO);
+			STDERR_FILENO);
 	else
 		return (0);
 	return (1);

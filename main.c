@@ -25,7 +25,7 @@ void	ft_init_data(t_data *data, char **argv, int argc)
 	data->width = 800;
 	data->height = 600;
 	data->mag = 4;
-	data->px_rate =  data->mag / data->width;
+	data->px_rate = data->mag / data->width;
 	data->name = argv[1];
 }
 
@@ -41,7 +41,7 @@ void	scroll_manager(double xd, double yd, void *params)
 	calc_coordinates(inf);
 }
 
-void key_manager(mlx_key_data_t keydata, void* param)
+void	key_manager(mlx_key_data_t keydata, void *param)
 {
 	t_data	*window;
 
@@ -79,15 +79,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argc > 4)
 	{
-		ft_putstr_fd("Uso: ./fractol <mandelbrot | (julia x y)>\n", STDOUT_FILENO);
+		ft_putstr_fd("Use: ./fractol <mandelbrot | (julia x y)>\n", 1);
 		return (1);
 	}
 	if (args_checker(argc, argv) == 1)
 		return (1);
 	ft_init_data(&data, argv, argc);
 	ft_display(&data);
-	mlx_delete_image(data.mlx, data.img)
-	mlx_terminate(data.mlx);
 	ft_memset(&data, 0, sizeof(t_data));
 	return (0);
 }

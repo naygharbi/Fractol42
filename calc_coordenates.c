@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_coordenates.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: najgharb <najgharb@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: najlghar <najlghar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:06:40 by najgharb          #+#    #+#             */
-/*   Updated: 2025/06/02 20:25:50 by najgharb         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:59:45 by najlghar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
  * @return: void.
  */
 
-void	color_pixel(void *pixel, uchar_t i, uchar_t c)
+void	color_pixel(void *pixel, t_uchar i, t_uchar c)
 {
-	uchar_t	*pxl;
-	uchar_t	iter;
+	t_uchar	*pxl;
+	t_uchar	iter;
 
 	iter = 0;
-	pxl = (uchar_t *)pixel;
+	pxl = (t_uchar *)pixel;
 	if (i == MAX_ITER)
 		ft_memset(pxl, 0, 4);
 	else
@@ -47,7 +47,7 @@ void	color_pixel(void *pixel, uchar_t i, uchar_t c)
 void	mandel_calc(void *inf, void *pixel, double r, double i)
 {
 	t_data	*info;
-	uint_t	iter;
+	t_uint	iter;
 	double	x;
 	double	y;
 	double	xtmp;
@@ -70,7 +70,7 @@ void	mandel_calc(void *inf, void *pixel, double r, double i)
 void	julia_calc(void *info, void *pixel, double r, double i)
 {
 	t_data	*inf;
-	uint_t	iter;
+	t_uint	iter;
 	double	xtmp;
 
 	inf = (t_data *)info;
@@ -91,8 +91,8 @@ void	draw_fractal(t_data *inf, void (*f)(void *, void *, double, double))
 	double	r;
 	double	i;
 	void	*pixel;
-	uint_t	iterx;
-	uint_t	itery;
+	t_uint	iterx;
+	t_uint	itery;
 
 	r = inf->r;
 	i = inf->i;
